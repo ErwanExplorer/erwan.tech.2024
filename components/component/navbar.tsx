@@ -28,13 +28,13 @@ export function Navbar() {
         Erwan.tech
       </Link>
       <nav className="hidden md:flex items-center gap-6">
-        <Link href="#" className="font-medium hover:text-primary transition-colors" prefetch={false}>
+        <Link href="https://www.instagram.com/erwan.codes/" className="font-medium hover:text-primary transition-colors" prefetch={false}>
           <InstagramIcon className="h-6 w-6" />
         </Link>
-        <Link href="#" className="font-medium hover:text-primary transition-colors" prefetch={false}>
+        <Link href="https://github.com/ErwanExplorer" className="font-medium hover:text-primary transition-colors" prefetch={false}>
           <GitlabIcon className="h-6 w-6" />
         </Link>
-        <Link href="#" className="font-medium hover:text-primary transition-colors" prefetch={false}>
+        <Link href="https://www.linkedin.com/in/erwan-sagnardon/" className="font-medium hover:text-primary transition-colors" prefetch={false}>
           <LinkedinIcon className="h-6 w-6" />
         </Link>
       </nav>

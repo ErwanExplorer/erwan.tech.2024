@@ -26,17 +26,17 @@ export function Footer() {
         <p className="text-sm text-muted-foreground">&copy; 2024 Erwan Sagnardon</p>
         <div className="flex items-center gap-4">
           <Link
-            href="#"
+            href="https://www.instagram.com/erwan.codes/"
             aria-label="Instagram"
             className="text-muted-foreground hover:text-foreground"
             prefetch={false}
           >
             <InstagramIcon className="h-5 w-5" />
           </Link>
-          <Link href="#" aria-label="GitHub" className="text-muted-foreground hover:text-foreground" prefetch={false}>
+          <Link href="https://github.com/ErwanExplorer" aria-label="GitHub" className="text-muted-foreground hover:text-foreground" prefetch={false}>
             <GitlabIcon className="h-5 w-5" />
           </Link>
-          <Link href="#" aria-label="LinkedIn" className="text-muted-foreground hover:text-foreground" prefetch={false}>
+          <Link href="https://www.linkedin.com/in/erwan-sagnardon/" aria-label="LinkedIn" className="text-muted-foreground hover:text-foreground" prefetch={false}>
             <LinkedinIcon className="h-5 w-5" />
           </Link>
         </div>
