@@ -11,7 +11,7 @@ export function Hero() {
               <p className="text-muted-foreground text-lg md:text-xl">Software Engineer</p>
             </div>
             <p className="max-w-[600px] text-muted-foreground md:text-xl">
-              Développeur Web passionné d&apos;astronomie et d&apos;aérospatiale. Mon parcours professionnel dans le développement web coexiste harmonieusement avec ma fascination pour les étoiles et l&apos;univers. Mon rêve est de devenir ingénieur spatial, contribuant ainsi à l&apos;exploration de l&apos;infini.
+              Développeur Web passionné d'astronomie et d'aérospatiale. Mon parcours professionnel dans le développement web coexiste harmonieusement avec ma fascination pour les étoiles et l'univers. Mon rêve est de devenir ingénieur spatial, contribuant ainsi à l'exploration de l'infini.
             </p>
           </div>
           <img
