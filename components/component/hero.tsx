@@ -33,7 +33,7 @@ export function Hero() {
             </p>
           </div>
           <img
-            src="/placeholder.svg"
+            src="/assets/images/hero.png"
             width="550"
             height="550"
             alt="Hero"
