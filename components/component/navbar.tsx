@@ -2,6 +2,8 @@ import React from 'react';
 import Link from "next/link"
 import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet"
 import { Button } from "@/components/ui/button"
+import { SunIcon } from "@radix-ui/react-icons"
+import { ModeToggle } from './ModeToggle';
 
 interface IconProps extends React.SVGProps<SVGSVGElement> {}
 
@@ -21,6 +23,7 @@ export function Navbar() {
         <Link href="https://www.linkedin.com/in/erwan-sagnardon/" className="font-medium hover:text-primary transition-colors" prefetch={false}>
           <LinkedinIcon className="h-6 w-6" />
         </Link>
+        <ModeToggle />
       </nav>
       <Sheet>
         <SheetTrigger asChild>

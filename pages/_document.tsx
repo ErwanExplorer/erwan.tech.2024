@@ -1,4 +1,5 @@
 import { Html, Head, Main, NextScript } from "next/document";
+import { ThemeProvider } from "@/components/component/theme-provider";
 
 export default function Document() {
   return (
@@ -13,8 +14,15 @@ export default function Document() {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       <body>
+      <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
         <Main />
         <NextScript />
+        </ThemeProvider>
       </body>
     </Html>
   );
