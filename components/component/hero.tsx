@@ -7,7 +7,7 @@ export function Hero() {
         <div className="grid gap-8 md:grid-cols-[1fr_400px] md:gap-12 lg:grid-cols-[1fr_550px]">
           <div className="space-y-4">
             <div className="space-y-2">
-              <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-6xl lg:text-6xl">Erwan Sagnardon, 19 ans</h1>
+              <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-6xl lg:text-6xl">Erwan Sagnardon</h1>
               <p className="text-muted-foreground text-lg md:text-xl">Software Engineer</p>
             </div>
             <p className="max-w-[600px] text-muted-foreground md:text-xl">
