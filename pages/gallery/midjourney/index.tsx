@@ -6,7 +6,7 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import Image from "next/image";
 
 // Création du tableau d'images Midjourney
-const midjourneyImages = Array.from({ length: 59 }, (_, index) => ({
+const midjourneyImages = Array.from({ length: 55 }, (_, index) => ({
   id: index + 1,
   src: `/assets/images/midjourney/midjourney (${index + 1}).png`,
   alt: `Midjourney Image ${index + 1}`
