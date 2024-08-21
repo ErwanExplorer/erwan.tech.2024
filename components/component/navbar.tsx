@@ -4,14 +4,16 @@ import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet"
 import { Button } from "@/components/ui/button"
 import { SunIcon } from "@radix-ui/react-icons"
 import { ModeToggle } from './ModeToggle';
+import { Code } from "lucide-react"
 
 interface IconProps extends React.SVGProps<SVGSVGElement> {}
 
 export function Navbar() {
   return (
     <header className="flex items-center justify-between h-16 px-4 md:px-6 bg-background border-b">
-      <Link href="/" className="text-lg font-bold" prefetch={false}>
-        Erwan.tech
+      <Link href="/" className="flex items-center gap-2 text-lg font-semibold" prefetch={false}>
+      <Code />
+      <span>Erwan.tech</span>
       </Link>
       <nav className="hidden md:flex items-center gap-6">
         <Link href="https://www.instagram.com/erwan.codes/" className="font-medium hover:text-primary transition-colors" prefetch={false}>
