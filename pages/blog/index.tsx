@@ -35,9 +35,22 @@ export default function Home({ articles }: HomeProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-  const res = await fetch(`${apiUrl}/api/articles`);
-  const articles: Article[] = await res.json();
+  try {
+    // Appel à l'API interne pour obtenir les articles
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/articles`);
 
-  return { props: { articles } };
-}
+    if (!res.ok) {
+      throw new Error(`Failed to fetch articles, status: ${res.status}`);
+    }
+
+    // Récupération des données
+    const articles: Article[] = await res.json();
+
+    return { props: { articles } };
+  } catch (error) {
+    console.error('Error fetching articles:', error);
+
+    // Gestion des erreurs : retourne une liste vide d'articles si une erreur se produit
+    return { props: { articles: [] } };
+  }
+};
