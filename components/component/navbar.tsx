@@ -25,6 +25,9 @@ export function Navbar() {
         <Link href="https://www.linkedin.com/in/erwan-sagnardon/" className="font-medium hover:text-primary transition-colors" prefetch={false}>
           <LinkedinIcon className="h-6 w-6" />
         </Link>
+        <Link href="/blog" className="font-medium hover:text-primary transition-colors" prefetch={false}>
+          Blog <span className='mt-6 text-muted-foreground'>(En Apha)</span>
+        </Link>
         <ModeToggle />
       </nav>
       <Sheet>

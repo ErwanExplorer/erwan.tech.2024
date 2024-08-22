@@ -35,7 +35,7 @@ export default function Home({ articles }: HomeProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const res = await fetch('http://localhost:3000/api/articles');
+  const res = await fetch('http://erwan.tech/api/articles');
   const articles: Article[] = await res.json();
 
   return { props: { articles } };

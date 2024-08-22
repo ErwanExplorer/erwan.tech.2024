@@ -51,7 +51,7 @@ export default function ArticlePage({ article }: ArticlePageProps) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const res = await fetch('http://localhost:3000/api/articles');
+  const res = await fetch('http://erwan.tech/api/articles');
   const articles: Article[] = await res.json();
 
   const paths = articles.map((article) => ({
@@ -62,7 +62,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const res = await fetch(`http://localhost:3000/api/articles`);
+  const res = await fetch(`http://erwan.tech/api/articles`);
   const articles: Article[] = await res.json();
 
   const article = articles.find((a) => a.slug === params?.slug);
