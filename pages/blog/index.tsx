@@ -19,12 +19,12 @@ export default function Home({ articles }: HomeProps) {
         <meta name="author" content="Erwan.tech" />
         <meta property="og:title" content="Blog de Erwan.tech - IA, Technologie, Développement et Plus" />
         <meta property="og:description" content="Bienvenue sur le blog de Erwan.tech, où je partage mes pensées, idées et expériences sur l'intelligence artificielle, le développement de logiciels, la technologie, et plus encore." />
-        <meta property="og:image" content="https://erwan.tech/placeholder-image.png" />
+        <meta property="og:image" content="https://erwan.tech/assets/images/icon.png" />
         <meta property="og:url" content="https://erwan.tech/blog" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Blog de Erwan.tech - IA, Technologie, Développement et Plus" />
         <meta name="twitter:description" content="Bienvenue sur le blog de Erwan.tech, où je partage mes pensées, idées et expériences sur l'intelligence artificielle, le développement de logiciels, la technologie, et plus encore." />
-        <meta name="twitter:image" content="https://erwan.tech/placeholder-image.png" />
+        <meta name="twitter:image" content="https://erwan.tech/assets/images/icon.png" />
         <link rel="canonical" href="https://erwan.tech/blog" />
       </Head>
       <Navbar />
