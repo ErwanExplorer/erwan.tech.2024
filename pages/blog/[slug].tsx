@@ -52,38 +52,64 @@ export default function ArticlePage({ article }: ArticlePageProps) {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
   if (!apiUrl) {
     throw new Error('NEXT_PUBLIC_API_URL is not defined');
   }
-  const res = await fetch(`${apiUrl}/api/articles`);
-  const articles: Article[] = await res.json();
 
-  const paths = articles.map((article) => ({
-    params: { slug: article.slug },
-  }));
+  try {
+    const res = await fetch(`${apiUrl}/api/articles`);
 
-  return { paths, fallback: false };
+    if (!res.ok) {
+      throw new Error(`Failed to fetch articles, status: ${res.status}`);
+    }
+
+    const articles: Article[] = await res.json();
+
+    const paths = articles.map((article) => ({
+      params: { slug: article.slug },
+    }));
+
+    return { paths, fallback: false };
+  } catch (error) {
+    console.error('Error fetching articles:', error);
+    return { paths: [], fallback: false };
+  }
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
   if (!apiUrl) {
     throw new Error('NEXT_PUBLIC_API_URL is not defined');
   }
-  const res = await fetch(`${apiUrl}/api/articles`);
-  const articles: Article[] = await res.json();
 
-  const article = articles.find((a) => a.slug === params?.slug);
+  try {
+    const res = await fetch(`${apiUrl}/api/articles`);
 
-  if (!article) {
+    if (!res.ok) {
+      throw new Error(`Failed to fetch articles, status: ${res.status}`);
+    }
+
+    const articles: Article[] = await res.json();
+
+    const article = articles.find((a) => a.slug === params?.slug);
+
+    if (!article) {
+      return {
+        notFound: true,
+      };
+    }
+
+    return {
+      props: {
+        article,
+      },
+    };
+  } catch (error) {
+    console.error('Error fetching article:', error);
     return {
       notFound: true,
     };
   }
-
-  return {
-    props: {
-      article,
-    },
-  };
 };
