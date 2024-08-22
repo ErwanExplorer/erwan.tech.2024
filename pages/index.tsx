@@ -36,7 +36,7 @@ export default function Home({ latestArticle }: HomeProps) {
 
 export const getStaticProps: GetStaticProps = async () => {
   try {
-    const res = await fetch('${process.env.NEXT_PUBLIC_API_URL}/api/articles');
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/articles`);
     if (!res.ok) {
       throw new Error('Failed to fetch articles');
     }
