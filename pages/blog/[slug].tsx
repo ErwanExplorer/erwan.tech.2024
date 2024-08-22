@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
@@ -19,15 +21,9 @@ export default function ArticlePage() {
     if (!slug) return; // Assurez-vous que le slug est défini avant de faire l'appel API
 
     const fetchArticle = async () => {
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-
-      if (!apiUrl) {
-        setError('API URL is not defined');
-        return;
-      }
-
       try {
-        const res = await fetch(`${apiUrl}/api/articles`);
+        // Utilisez /api/articles pour récupérer tous les articles
+        const res = await fetch('/api/articles');
         if (!res.ok) {
           throw new Error(`Failed to fetch articles, status: ${res.status}`);
         }
@@ -40,11 +36,11 @@ export default function ArticlePage() {
         } else {
           setArticle(foundArticle);
         }
-      } catch (err) { // Renommer 'error' en 'err'
-        if (err instanceof Error) { // Vérifier si 'err' est une instance d'Error
+      } catch (err) {
+        if (err instanceof Error) {
           setError(`Error fetching article: ${err.message}`);
         } else {
-          setError('Unknown error occurred'); // Gérer les erreurs inconnues
+          setError('Unknown error occurred');
         }
       } finally {
         setLoading(false);
