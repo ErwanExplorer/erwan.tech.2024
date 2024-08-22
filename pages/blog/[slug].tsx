@@ -39,10 +39,10 @@ export default function ArticlePage({ article }: ArticlePageProps) {
               <ReactPlayer url={article.video} controls width="100%" />
             </div>
           )}
-            <footer className="mt-6 text-lg text-muted-foreground">{article.footer}</footer>
-            {article.credits && (
-              <footer className="mt-2 text-lg text-muted-foreground">Crédits : {article.credits}</footer>
-            )}
+          <footer className="mt-6 text-lg text-muted-foreground">{article.footer}</footer>
+          {article.credits && (
+            <footer className="mt-2 text-lg text-muted-foreground">Crédits : {article.credits}</footer>
+          )}
         </article>
       </main>
       <Footer />
@@ -51,7 +51,11 @@ export default function ArticlePage({ article }: ArticlePageProps) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const res = await fetch('${process.env.NEXT_PUBLIC_API_URL}/api/articles');
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+  if (!apiUrl) {
+    throw new Error('NEXT_PUBLIC_API_URL is not defined');
+  }
+  const res = await fetch(`${apiUrl}/api/articles`);
   const articles: Article[] = await res.json();
 
   const paths = articles.map((article) => ({
@@ -62,7 +66,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/articles`);
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+  if (!apiUrl) {
+    throw new Error('NEXT_PUBLIC_API_URL is not defined');
+  }
+  const res = await fetch(`${apiUrl}/api/articles`);
   const articles: Article[] = await res.json();
 
   const article = articles.find((a) => a.slug === params?.slug);
