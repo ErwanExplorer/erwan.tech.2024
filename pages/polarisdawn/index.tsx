@@ -30,6 +30,7 @@ export default function PolarisDawnPage() {
                 <div className="mt-4">
                     <ReactPlayer
                         url="https://pro-erwantv.wistia.com/medias/qezh115tuh"
+                        controls
                     />
                 </div>
                 <div className="mt-6 text-lg">
