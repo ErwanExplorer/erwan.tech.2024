@@ -1,4 +1,5 @@
 import dynamic from 'next/dynamic';
+import Head from 'next/head';
 import { Navbar } from "@/components/component/navbar";
 import { Footer } from '@/components/component/footer';
 
@@ -7,6 +8,21 @@ const ReactPlayer = dynamic(() => import('react-player'), { ssr: false });
 export default function PolarisDawnPage() {
     return (
         <>
+            <Head>
+                <title>Polaris Dawn | Mission spatiale habitée avec Crew Dragon</title>
+                <meta name="description" content="Polaris Dawn est une mission spatiale habitée du Programme Polaris, effectuée avec un vaisseau Crew Dragon de SpaceX. Le lancement est prévu pour le 27 août 2024." />
+                <meta name="keywords" content="Polaris Dawn, mission spatiale, Crew Dragon, SpaceX, programme Polaris, lancement spatial, Centre spatial Kennedy" />
+                <meta property="og:title" content="Polaris Dawn | Mission spatiale habitée avec Crew Dragon" />
+                <meta property="og:description" content="Polaris Dawn est une mission spatiale habitée du Programme Polaris, effectuée avec un vaisseau Crew Dragon de SpaceX. Le lancement est prévu pour le 27 août 2024." />
+                <meta property="og:image" content="URL_DE_VOTRE_IMAGE_DE_PRÉSENTATION" />
+                <meta property="og:url" content="URL_DE_VOTRE_PAGE" />
+                <meta property="og:type" content="website" />
+                <meta property="twitter:card" content="summary_large_image" />
+                <meta property="twitter:title" content="Polaris Dawn | Mission spatiale habitée avec Crew Dragon" />
+                <meta property="twitter:description" content="Polaris Dawn est une mission spatiale habitée du Programme Polaris, effectuée avec un vaisseau Crew Dragon de SpaceX. Le lancement est prévu pour le 27 août 2024." />
+                <meta property="twitter:image" content="URL_DE_VOTRE_IMAGE_DE_PRÉSENTATION" />
+            </Head>
+
             <Navbar />
 
             <div className="flex flex-col items-center m-4">
@@ -26,7 +42,6 @@ export default function PolarisDawnPage() {
                 </div>
             </div>
 
-           
             <div className="fixed bottom-0 w-full">
                 <Footer />
             </div>
