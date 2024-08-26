@@ -2,11 +2,19 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 
-export default function QuizComponent() {
+interface QuizComponentProps {
+  ranking: { name: string, score: number }[];
+  updateRanking: (newRanking: { name: string, score: number }[]) => void;
+}
+
+export default function QuizComponent({ ranking, updateRanking }: QuizComponentProps) {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
   const [showScore, setShowScore] = useState(false);
+  const [userName, setUserName] = useState('');
+  const [showUserNameInput, setShowUserNameInput] = useState(true);
 
+  // Questions for the quiz
   const questions = [
     {
       questionText: 'Que signifie HTML ?',
@@ -55,6 +63,7 @@ export default function QuizComponent() {
     },
   ];
 
+  // Handle answer option click
   const handleAnswerOptionClick = (isCorrect: boolean) => {
     if (isCorrect) {
       setScore(prevScore => prevScore + 1);
@@ -65,7 +74,29 @@ export default function QuizComponent() {
       setCurrentQuestion(nextQuestion);
     } else {
       setShowScore(true);
+      setShowUserNameInput(false);
+
+      if (userName.trim() !== '') {
+        const newRanking = [...ranking, { name: userName, score }];
+        updateRanking(newRanking);
+      }
     }
+  };
+
+  // Handle name input submission
+  const handleNameSubmit = () => {
+    if (userName.trim() !== '') {
+      setShowUserNameInput(false);
+    }
+  };
+
+  // Handle replay action
+  const handleReplay = () => {
+    setCurrentQuestion(0);
+    setScore(0);
+    setShowScore(false);
+    setShowUserNameInput(true);
+    setUserName('');
   };
 
   return (
@@ -75,9 +106,33 @@ export default function QuizComponent() {
         <CardDescription>Testez vos connaissances en informatique !</CardDescription>
       </CardHeader>
       <CardContent>
-        {showScore ? (
-          <div className='score-section text-center'>
-            Vous avez obtenu {score} sur {questions.length} !
+        {showUserNameInput ? (
+          <div className='text-center'>
+            <input
+              type='text'
+              placeholder='Entrez votre pseudo'
+              value={userName}
+              onChange={(e) => setUserName(e.target.value)}
+              className='border p-2 rounded mb-2'
+            />
+            <Button onClick={handleNameSubmit}>Commencer le quiz</Button>
+          </div>
+        ) : showScore ? (
+          <div className='text-center'>
+            <div>Vous avez obtenu {score} sur {questions.length} !</div>
+            <div className='mt-4'>
+              <h2 className='text-xl'>Classement :</h2>
+              <ul>
+                {ranking.length > 0 ? (
+                  ranking.sort((a, b) => b.score - a.score).map((entry, index) => (
+                    <li key={index}>{entry.name} : {entry.score}</li>
+                  ))
+                ) : (
+                  <li>Aucun score disponible</li>
+                )}
+              </ul>
+            </div>
+            <Button onClick={handleReplay}>Rejouer</Button>
           </div>
         ) : (
           <>
@@ -103,11 +158,7 @@ export default function QuizComponent() {
       </CardContent>
       <CardFooter className="justify-center">
         {showScore && (
-          <Button onClick={() => {
-            setCurrentQuestion(0);
-            setScore(0);
-            setShowScore(false);
-          }}>
+          <Button onClick={handleReplay}>
             Rejouer
           </Button>
         )}
