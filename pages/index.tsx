@@ -28,7 +28,6 @@ export default function Home({ latestArticle }: HomeProps) {
       <Skills />
       <MyProjets />
       <Contact />
-      <BlogVedetteSection latestArticle={latestArticle} />
       <Footer />
     </>
   );
